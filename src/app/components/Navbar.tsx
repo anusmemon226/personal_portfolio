@@ -30,7 +30,7 @@ function Navbar() {
   return (
     <div className={`bg-black px-6 sm:px-16 md:px-10 lg:px-20 py-3 flex flex-row justify-between items-center ${stickyNavbar ? "sticky top-0 z-50" : "relative"}`}>
       <Link href={"/"}>
-        <h1 className="font-black text-4xl text-white">ANUS</h1>
+        <h1 className="font-black text-4xl text-white">ANAS</h1>
       </Link>
       <div
         className={`flex items-center ${showMenu == false
