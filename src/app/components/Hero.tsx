@@ -1,6 +1,4 @@
-import Image from "next/image";
 import React from "react";
-import profilePic from "../../../public/profilePicPng.png";
 
 function Hero() {
   return (
@@ -10,7 +8,7 @@ function Hero() {
           Hello!
         </p>
         <h1 className="text-[60px] font-black max-3sm:leading-[0.45in] max-4sm:leading-[0.4in] sm:leading-[0.6in] leading-[0.58in] max-3sm:text-[45px] max-4sm:text-[40px] max-5sm:text-[35px]">
-          I'm <span className="text-[#ffbd39]">Muhammad Anus</span>
+          I&#39;m <span className="text-[#ffbd39]">Muhammad Anus</span>
         </h1>
         <h2 className="text-[30px] py-3 text-wrap max-3sm:text-[22px] max-4sm:text-[22px] max-5sm:text-[18px]">
           A Freelance Web Developer
