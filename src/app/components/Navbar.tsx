@@ -1,35 +1,42 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
-  const [stickyNavbar,setStickyNavbar] = useState(false)
+  const [stickyNavbar, setStickyNavbar] = useState(false)
 
-  window.onresize = function () {
-    if (window.innerWidth >= 768 && showMenu) {
-      setShowMenu(false);
-    }
-  };
-  window.onscroll = function () {
-    if(scrollY>0){
-      setStickyNavbar(true)
-    }else{
-      setStickyNavbar(false)
-    }
-  }
+
+  useEffect(() => {
+
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && showMenu) {
+        setShowMenu(false);
+      }
+    };
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setStickyNavbar(true);
+      } else {
+        setStickyNavbar(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
+
+  }, [showMenu])
 
   return (
-    <div className={`bg-black px-6 sm:px-16 md:px-10 lg:px-20 py-3 flex flex-row justify-between items-center ${stickyNavbar?"sticky top-0 z-50":"relative"}`}>
+    <div className={`bg-black px-6 sm:px-16 md:px-10 lg:px-20 py-3 flex flex-row justify-between items-center ${stickyNavbar ? "sticky top-0 z-50" : "relative"}`}>
       <Link href={"/"}>
         <h1 className="font-black text-4xl text-white">ANUS</h1>
       </Link>
       <div
-        className={`flex items-center ${
-          showMenu == false
-            ? "max-md:h-0 max-md:py-0 max-md:hidden"
-            : "max-md:h-100 max-md:visible"
-        } max-md:absolute max-md:flex-col max-md:top-[100%] max-md:left-0 max-md:bg-black max-md:w-full max-md:py-4 z-20`}
+        className={`flex items-center ${showMenu == false
+          ? "max-md:h-0 max-md:py-0 max-md:hidden"
+          : "max-md:h-100 max-md:visible"
+          } max-md:absolute max-md:flex-col max-md:top-[100%] max-md:left-0 max-md:bg-black max-md:w-full max-md:py-4 z-20`}
       >
         <Link href={"/"} className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2">
           Home
