@@ -1,10 +1,15 @@
 import Image from "next/image";
-import React from "react";
+import React, { forwardRef } from "react";
 import profilePic from "../../../public/profilePicPng.png";
 
-function About() {
+
+const About = (_: {}, ref: React.ForwardedRef<HTMLDivElement>) => {
   return (
-    <div id="about" className="mb-10 flex flex-col items-center justify-center px-6 max-5sm:px-0 sm:px-16 md:px-10 lg:px-20 pt-10">
+    <div
+      ref={ref}
+      id="about"
+      className="mb-10 flex flex-col items-center justify-center px-6 max-5sm:px-0 sm:px-16 md:px-10 lg:px-20 pt-10"
+    >
       <h1 className="font-black text-[50px] max-md:text-[42px] max-sm:text-[38px] uppercase text-center leading-relaxed">
         About Me
       </h1>
@@ -20,7 +25,9 @@ function About() {
         </div>
         <div className="w-[50%] max-md:w-[100%] bg-slate-50 px-8 flex flex-col justify-center py-5">
           <div className="flex py-3">
-            <h1 className="font-bold text-[30px] max-sm:text-[26px] underline underline-offset-4">Personal Details</h1>
+            <h1 className="font-bold text-[30px] max-sm:text-[26px] underline underline-offset-4">
+              Personal Details
+            </h1>
           </div>
           <div>
             <div className="flex max-md:flex-wrap max-4sm:flex-col py-3">
@@ -51,6 +58,6 @@ function About() {
       </div>
     </div>
   );
-}
+};
 
-export default About;
+export default forwardRef(About);

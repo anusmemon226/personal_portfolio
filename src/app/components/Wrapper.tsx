@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useRef } from 'react'
 import Navbar from './Navbar'
 import Hero from './Hero'
 import About from './About'
@@ -9,6 +9,13 @@ import { motion, useScroll, useSpring } from "motion/react"
 import ScrollToTop from './ScrollToTop'
 
 const Wrapper = () => {
+    const heroRef = useRef<HTMLDivElement>(null!)
+    const aboutRef = useRef<HTMLDivElement>(null!)
+    const resumeRef = useRef<HTMLDivElement>(null!)
+    const ServicesRef = useRef<HTMLDivElement>(null!)
+    // const skillRef = useRef<HTMLDivElement>(null!)
+    // const projectRef = useRef<HTMLDivElement>(null!)
+    // const contactRef = useRef<HTMLDivElement>(null!)
     const { scrollYProgress } = useScroll()
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -31,12 +38,12 @@ const Wrapper = () => {
                     zIndex: 100
                 }}
             />
-            <Navbar />
-            <Hero />
-            <About />
-            <Resume />
-            <Services />
-            <ScrollToTop/>
+            <Navbar heroRef={heroRef} aboutRef={aboutRef} resumeRef={resumeRef} serviceRef={ServicesRef} />
+            <Hero ref={heroRef} />
+            <About ref={aboutRef} />
+            <Resume ref={resumeRef} />
+            <Services ref={ServicesRef} />
+            <ScrollToTop />
         </>
     )
 }

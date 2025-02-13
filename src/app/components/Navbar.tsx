@@ -2,7 +2,14 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-function Navbar() {
+interface refTypes {
+  heroRef: React.RefObject<HTMLDivElement>,
+  aboutRef: React.RefObject<HTMLDivElement>,
+  resumeRef: React.RefObject<HTMLDivElement>,
+  serviceRef: React.RefObject<HTMLDivElement>
+}
+
+function Navbar({ heroRef, aboutRef, resumeRef, serviceRef }: refTypes) {
   const [showMenu, setShowMenu] = useState(false);
   const [stickyNavbar, setStickyNavbar] = useState(false)
 
@@ -26,8 +33,8 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("resize",handleResize)
-      window.removeEventListener("scroll",handleScroll)
+      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("scroll", handleScroll)
     }
 
   }, [showMenu])
@@ -42,27 +49,41 @@ function Navbar() {
     ${showMenu ? "max-md:max-h-[400px] max-md:py-4" : "max-md:max-h-0 max-md:py-0"}
     max-md:absolute max-md:flex-col max-md:top-[100%] max-md:left-0 max-md:bg-black max-md:w-full z-20`}
       >
-        <Link href={"/"} className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2">
+        <button
+          onClick={() => {
+            window.scrollTo({ top: heroRef.current.offsetTop - heroRef.current.offsetTop, behavior: "smooth" })
+            setShowMenu(false)
+          }}
+          className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2">
           Home
-        </Link>
-        <Link
-          href={"/about"}
+        </button>
+        <button
+          onClick={() => {
+            window.scrollTo({ top: aboutRef.current.offsetTop - 50, behavior: "smooth" })
+            setShowMenu(false)
+          }}
           className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
         >
           About
-        </Link>
-        <Link
-          href={"/resume"}
+        </button>
+        <button
+          onClick={() => {
+            window.scrollTo({ top: resumeRef.current.offsetTop - 60, behavior: "smooth" })
+            setShowMenu(false)
+          }}
           className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
         >
           Resume
-        </Link>
-        <Link
-          href={"/"}
+        </button>
+        <button
+          onClick={() => {
+            window.scrollTo({ top: serviceRef.current.offsetTop - 60, behavior: "smooth" })
+            setShowMenu(false)
+          }}
           className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
         >
           Services
-        </Link>
+        </button>
         <Link
           href={"/"}
           className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
