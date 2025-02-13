@@ -3,7 +3,7 @@ import React, { forwardRef } from "react";
 import profilePic from "../../../public/profilePicPng.png";
 
 
-const About = (_: {}, ref: React.ForwardedRef<HTMLDivElement>) => {
+const About = (_: unknown, ref: React.ForwardedRef<HTMLDivElement>) => {
   return (
     <div
       ref={ref}

@@ -1,6 +1,6 @@
 import React, { ForwardedRef, forwardRef } from 'react'
 
-function Resume(_: {}, ref: ForwardedRef<HTMLDivElement>) {
+function Resume(_:unknown, ref: ForwardedRef<HTMLDivElement>) {
   return (
     <div ref={ref} id='resume' className='mb-10 flex flex-col items-center justify-center px-6 max-5sm:px-5 sm:px-16 md:px-10 lg:px-20'>
       <h1 className='font-black text-[50px] max-md:text-[42px] max-sm:text-[38px] uppercase text-center leading-relaxed'>Resume</h1>
