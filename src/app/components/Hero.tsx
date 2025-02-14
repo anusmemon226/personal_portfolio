@@ -25,25 +25,6 @@ function Hero(_: unknown, ref: ForwardedRef<HTMLDivElement>) {
         className={`sm:w-[90%] w-[100%] h-[100%] bg-profilePic bg-50% bg-bottom sm:bg-contain bg-no-repeat sm:bg-right-bottom absolute left-0`}
       ></div>
     </div>
-
-    // <div className="flex justify-between max-medium:items-center max-medium:flex-col-reverse px-6 sm:px-16 md:px-10 lg:px-20 bg-slate-50">
-    //   <div className="flex w-[50%] max-medium:w-[100%] max-lg:w-[50%] flex-col justify-center mt-[1rem] mb-[2rem] medium:my-[4rem] px-2 z-10 break-words">
-    //     <p className="text-[20px] uppercase text-[#ffbd39] py-5 font-semibold">
-    //       Hello!
-    //     </p>
-    //     <h1 className="text-[60px] font-black max-3sm:leading-[0.5in] max-4sm:leading-[0.4in] sm:leading-[0.6in] leading-[0.58in] max-3sm:text-[50px] max-4sm:text-[40px] max-5sm:text-[35px]">
-    //       I'm <span className="text-[#ffbd39]">Muhammad Anus</span>
-    //     </h1>
-    //     <h2 className="text-[30px] py-3 text-wrap max-3sm:text-[25px] max-4sm:text-[22px] max-5sm:text-[18px]">A Freelance Web Developer</h2>
-    //     <div className="py-3 pb-5 flex max-5sm:flex-col">
-    //       <button className="bg-[#ffbd39] border border-[#ffbd39] text-sm py-3 px-5 rounded-full">Hire Me</button>
-    //       <button className="5sm:ml-4 max-5sm:mt-3 text-sm py-3 px-5 rounded-full border border-black">My Works</button>
-    //     </div>
-    //   </div>
-    //   <div className="lg:w-[500px] max-lg:w-[380px] max-3sm:w-[100%] max-3sm:h-[100%] max-lg:h-[380px] max-lg:rounded-full max-lg:overflow-hidden max-lg:my-auto max-medium:mt-10 max-lg:shadow-lg flex items-end">
-    //     <Image src={profilePic} alt="Profile Pic" className="lg:w-[500px] lg:h-[500px]"/>
-    //   </div>
-    // </div>
   );
 }
 

@@ -8,6 +8,8 @@ import Services from './Services'
 import { motion, useScroll, useSpring } from "motion/react"
 import ScrollToTop from './ScrollToTop'
 import Skills from './Skills'
+import Projects from './Projects'
+import Contact from './Contact'
 
 const Wrapper = () => {
     const heroRef = useRef<HTMLDivElement>(null!)
@@ -15,8 +17,8 @@ const Wrapper = () => {
     const resumeRef = useRef<HTMLDivElement>(null!)
     const ServicesRef = useRef<HTMLDivElement>(null!)
     const skillRef = useRef<HTMLDivElement>(null!)
-    // const projectRef = useRef<HTMLDivElement>(null!)
-    // const contactRef = useRef<HTMLDivElement>(null!)
+    const projectRef = useRef<HTMLDivElement>(null!)
+    const contactRef = useRef<HTMLDivElement>(null!)
     const { scrollYProgress } = useScroll()
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -39,12 +41,14 @@ const Wrapper = () => {
                     zIndex: 100
                 }}
             />
-            <Navbar heroRef={heroRef} aboutRef={aboutRef} resumeRef={resumeRef} serviceRef={ServicesRef} skillRef={skillRef}/>
+            <Navbar heroRef={heroRef} aboutRef={aboutRef} resumeRef={resumeRef} serviceRef={ServicesRef} skillRef={skillRef} projectRef={projectRef} contactRef={contactRef} />
             <Hero ref={heroRef} />
             <About ref={aboutRef} />
             <Resume ref={resumeRef} />
             <Services ref={ServicesRef} />
-            <Skills ref={skillRef}/>
+            <Skills ref={skillRef} />
+            <Projects ref={projectRef} />
+            <Contact ref={contactRef} />
             <ScrollToTop />
         </>
     )

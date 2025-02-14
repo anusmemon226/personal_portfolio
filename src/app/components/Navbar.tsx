@@ -1,19 +1,54 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import NavLink from "./NavLink";
 
 interface refTypes {
   heroRef: React.RefObject<HTMLDivElement>,
   aboutRef: React.RefObject<HTMLDivElement>,
   resumeRef: React.RefObject<HTMLDivElement>,
   serviceRef: React.RefObject<HTMLDivElement>,
-  skillRef: React.RefObject<HTMLDivElement>
+  skillRef: React.RefObject<HTMLDivElement>,
+  projectRef: React.RefObject<HTMLDivElement>,
+  contactRef: React.RefObject<HTMLDivElement>
 }
 
-function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef }: refTypes) {
+function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef, projectRef, contactRef }: refTypes) {
   const [showMenu, setShowMenu] = useState(false);
   const [stickyNavbar, setStickyNavbar] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
+  const [activeSection, setActiveSection] = useState("Home")
+
+
+  const handleClick = (currentSection: string) => {
+    switch (currentSection) {
+      case "Home":
+        window.scrollTo({ top: heroRef.current.offsetTop - heroRef.current.offsetTop, behavior: "smooth" })
+        break
+      case "About":
+        window.scrollTo({ top: aboutRef.current.offsetTop - 40, behavior: "smooth" })
+        break
+      case "Resume":
+        window.scrollTo({ top: resumeRef.current.offsetTop - 60, behavior: "smooth" })
+        break
+      case "Services":
+        window.scrollTo({ top: serviceRef.current.offsetTop - 60, behavior: "smooth" })
+        break
+      case "Skills":
+        window.scrollTo({ top: skillRef.current.offsetTop - 60, behavior: "smooth" })
+        break
+      case "Projects":
+        window.scrollTo({ top: projectRef.current.offsetTop - 60, behavior: "smooth" })
+        break
+      case "Contact":
+        window.scrollTo({ top: contactRef.current.offsetTop - 60, behavior: "smooth" })
+        break
+      default:
+        return
+    }
+
+
+    showMenu && setShowMenu(false)
+  }
 
   useEffect(() => {
 
@@ -34,15 +69,23 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef }: refTypes
       const resumeOffset = resumeRef.current.offsetTop;
       const serviceOffset = serviceRef.current.offsetTop
       const skillOffset = skillRef.current.offsetTop
+      const projectOffset = projectRef.current.offsetTop
+      const contactOffset = contactRef.current.offsetTop
 
       if (scrollPosition < aboutOffset - 50) {
-        setActiveSection("home");
+        setActiveSection("Home");
       } else if (scrollPosition >= aboutOffset - 50 && scrollPosition < resumeOffset - 65) {
-        setActiveSection("about");
+        setActiveSection("About");
       } else if (scrollPosition >= resumeOffset - 65 && scrollPosition < serviceOffset - 65) {
-        setActiveSection("resume");
-      } else if (scrollPosition >= serviceOffset - 65 && scrollPosition < skillOffset) {
-        setActiveSection("services");
+        setActiveSection("Resume");
+      } else if (scrollPosition >= serviceOffset - 65 && scrollPosition < skillOffset - 65) {
+        setActiveSection("Services");
+      } else if (scrollPosition >= skillOffset - 65 && scrollPosition < projectOffset - 65) {
+        setActiveSection("Skills");
+      } else if (scrollPosition >= projectOffset - 65 && scrollPosition < contactOffset - 65) {
+        setActiveSection("Projects");
+      } else if (scrollPosition >= contactOffset - 65) {
+        setActiveSection("Contact");
       }
     };
 
@@ -66,62 +109,13 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef }: refTypes
     ${showMenu ? "max-md:max-h-[400px] max-md:py-4" : "max-md:max-h-0 max-md:py-0"}
     max-md:absolute max-md:flex-col max-md:top-[100%] max-md:left-0 max-md:bg-black max-md:w-full z-20`}
       >
-        <button
-          onClick={() => {
-            window.scrollTo({ top: heroRef.current.offsetTop - heroRef.current.offsetTop, behavior: "smooth" })
-            setShowMenu(false)
-          }}
-          className={`${activeSection == "home" ? "text-[#ffbd39]" : "text-white hover:text-[#ffbd39]"} md:mx-3 lg:mx-5 transition duration-200 max-md:py-2`}>
-          Home
-        </button>
-        <button
-          onClick={() => {
-            window.scrollTo({ top: aboutRef.current.offsetTop - 40, behavior: "smooth" })
-            setShowMenu(false)
-          }}
-          className={`${activeSection == "about" ? "text-[#ffbd39]" : "text-white hover:text-[#ffbd39]"} md:mx-3 lg:mx-5 transition duration-200 max-md:py-2`}
-        >
-          About
-        </button>
-        <button
-          onClick={() => {
-            window.scrollTo({ top: resumeRef.current.offsetTop - 60, behavior: "smooth" })
-            setShowMenu(false)
-          }}
-          className={`${activeSection == "resume" ? "text-[#ffbd39]" : "text-white hover:text-[#ffbd39]"} md:mx-3 lg:mx-5 transition duration-200 max-md:py-2`}
-        >
-          Resume
-        </button>
-        <button
-          onClick={() => {
-            window.scrollTo({ top: serviceRef.current.offsetTop - 60, behavior: "smooth" })
-            setShowMenu(false)
-          }}
-          className={`${activeSection == "services" ? "text-[#ffbd39]" : "text-white hover:text-[#ffbd39]"} md:mx-3 lg:mx-5 transition duration-200 max-md:py-2`}
-        >
-          Services
-        </button>
-        <button
-          onClick={() => {
-            window.scrollTo({ top: skillRef.current.offsetTop - 40, behavior: "smooth" })
-            setShowMenu(false)
-          }}
-          className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
-        >
-          Skills
-        </button>
-        <Link
-          href={"/"}
-          className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
-        >
-          Projects
-        </Link>
-        <Link
-          href={"/"}
-          className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
-        >
-          Contact
-        </Link>
+        <NavLink title="Home" activeSection={activeSection} handleClick={handleClick} />
+        <NavLink title="About" activeSection={activeSection} handleClick={handleClick} />
+        <NavLink title="Resume" activeSection={activeSection} handleClick={handleClick} />
+        <NavLink title="Services" activeSection={activeSection} handleClick={handleClick} />
+        <NavLink title="Skills" activeSection={activeSection} handleClick={handleClick} />
+        <NavLink title="Projects" activeSection={activeSection} handleClick={handleClick} />
+        <NavLink title="Contact" activeSection={activeSection} handleClick={handleClick} />
       </div>
       <div
         className="flex items-center md:hidden cursor-pointer"
