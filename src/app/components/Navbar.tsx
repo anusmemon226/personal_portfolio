@@ -35,8 +35,6 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef }: refTypes
       const serviceOffset = serviceRef.current.offsetTop
       const skillOffset = skillRef.current.offsetTop
 
-      console.log(scrollPosition + " - " + (resumeOffset - 65))
-
       if (scrollPosition < aboutOffset - 50) {
         setActiveSection("home");
       } else if (scrollPosition >= aboutOffset - 50 && scrollPosition < resumeOffset - 65) {
@@ -69,7 +67,7 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef }: refTypes
     max-md:absolute max-md:flex-col max-md:top-[100%] max-md:left-0 max-md:bg-black max-md:w-full z-20`}
       >
         <button
-          onClick={(e) => {
+          onClick={() => {
             window.scrollTo({ top: heroRef.current.offsetTop - heroRef.current.offsetTop, behavior: "smooth" })
             setShowMenu(false)
           }}
