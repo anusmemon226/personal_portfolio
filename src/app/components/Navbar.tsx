@@ -6,13 +6,14 @@ interface refTypes {
   heroRef: React.RefObject<HTMLDivElement>,
   aboutRef: React.RefObject<HTMLDivElement>,
   resumeRef: React.RefObject<HTMLDivElement>,
-  serviceRef: React.RefObject<HTMLDivElement>
+  serviceRef: React.RefObject<HTMLDivElement>,
+  skillRef: React.RefObject<HTMLDivElement>
 }
 
-function Navbar({ heroRef, aboutRef, resumeRef, serviceRef }: refTypes) {
+function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef }: refTypes) {
   const [showMenu, setShowMenu] = useState(false);
   const [stickyNavbar, setStickyNavbar] = useState(false)
-
+  const [activeSection, setActiveSection] = useState("home")
 
   useEffect(() => {
 
@@ -26,6 +27,24 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef }: refTypes) {
         setStickyNavbar(true);
       } else {
         setStickyNavbar(false);
+      }
+
+      const scrollPosition = window.scrollY;
+      const aboutOffset = aboutRef.current.offsetTop;
+      const resumeOffset = resumeRef.current.offsetTop;
+      const serviceOffset = serviceRef.current.offsetTop
+      const skillOffset = skillRef.current.offsetTop
+
+      console.log(scrollPosition + " - " + (resumeOffset - 65))
+
+      if (scrollPosition < aboutOffset - 50) {
+        setActiveSection("home");
+      } else if (scrollPosition >= aboutOffset - 50 && scrollPosition < resumeOffset - 65) {
+        setActiveSection("about");
+      } else if (scrollPosition >= resumeOffset - 65 && scrollPosition < serviceOffset - 65) {
+        setActiveSection("resume");
+      } else if (scrollPosition >= serviceOffset - 65 && scrollPosition < skillOffset) {
+        setActiveSection("services");
       }
     };
 
@@ -45,24 +64,24 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef }: refTypes) {
         <h1 className="font-black text-4xl text-white">ANAS</h1>
       </Link>
       <div
-        className={`flex items-center overflow-hidden transition-all duration-1000 ease-in-out
+        className={`flex items-center overflow-hidden transition-all duration-500 ease-in-out
     ${showMenu ? "max-md:max-h-[400px] max-md:py-4" : "max-md:max-h-0 max-md:py-0"}
     max-md:absolute max-md:flex-col max-md:top-[100%] max-md:left-0 max-md:bg-black max-md:w-full z-20`}
       >
         <button
-          onClick={() => {
+          onClick={(e) => {
             window.scrollTo({ top: heroRef.current.offsetTop - heroRef.current.offsetTop, behavior: "smooth" })
             setShowMenu(false)
           }}
-          className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2">
+          className={`${activeSection == "home" ? "text-[#ffbd39]" : "text-white hover:text-[#ffbd39]"} md:mx-3 lg:mx-5 transition duration-200 max-md:py-2`}>
           Home
         </button>
         <button
           onClick={() => {
-            window.scrollTo({ top: aboutRef.current.offsetTop - 50, behavior: "smooth" })
+            window.scrollTo({ top: aboutRef.current.offsetTop - 40, behavior: "smooth" })
             setShowMenu(false)
           }}
-          className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
+          className={`${activeSection == "about" ? "text-[#ffbd39]" : "text-white hover:text-[#ffbd39]"} md:mx-3 lg:mx-5 transition duration-200 max-md:py-2`}
         >
           About
         </button>
@@ -71,7 +90,7 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef }: refTypes) {
             window.scrollTo({ top: resumeRef.current.offsetTop - 60, behavior: "smooth" })
             setShowMenu(false)
           }}
-          className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
+          className={`${activeSection == "resume" ? "text-[#ffbd39]" : "text-white hover:text-[#ffbd39]"} md:mx-3 lg:mx-5 transition duration-200 max-md:py-2`}
         >
           Resume
         </button>
@@ -80,16 +99,19 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef }: refTypes) {
             window.scrollTo({ top: serviceRef.current.offsetTop - 60, behavior: "smooth" })
             setShowMenu(false)
           }}
-          className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
+          className={`${activeSection == "services" ? "text-[#ffbd39]" : "text-white hover:text-[#ffbd39]"} md:mx-3 lg:mx-5 transition duration-200 max-md:py-2`}
         >
           Services
         </button>
-        <Link
-          href={"/"}
+        <button
+          onClick={() => {
+            window.scrollTo({ top: skillRef.current.offsetTop - 40, behavior: "smooth" })
+            setShowMenu(false)
+          }}
           className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
         >
           Skills
-        </Link>
+        </button>
         <Link
           href={"/"}
           className="text-white md:mx-3 lg:mx-5 hover:text-[#ffbd39] transition duration-200 max-md:py-2"
