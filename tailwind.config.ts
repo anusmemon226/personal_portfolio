@@ -13,7 +13,7 @@ export default {
         foreground: "var(--foreground)",
       },
       backgroundImage: {
-        "profilePic": "url('/profilePicPng.png')"
+        "profilePic": "url('/profilePicPng.webp')"
       },
       backgroundSize: {
         "50%": "500px"

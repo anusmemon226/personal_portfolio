@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { forwardRef } from "react";
-import profilePic from "../../../public/profilePicPng.png";
+import profilePic from "../../../public/profilePicPng.webp";
 import SectionHeader from "./SectionHeader";
 import AboutDetailField from "./AboutDetailField";
 

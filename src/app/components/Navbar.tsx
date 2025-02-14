@@ -47,16 +47,16 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef, projectRef
     }
 
 
-    showMenu && setShowMenu(false)
+    setShowMenu(false)
   }
 
   useEffect(() => {
-
     const handleResize = () => {
       if (window.innerWidth >= 768 && showMenu) {
         setShowMenu(false);
       }
     };
+
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setStickyNavbar(true);
@@ -64,28 +64,37 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef, projectRef
         setStickyNavbar(false);
       }
 
-      const scrollPosition = window.scrollY;
-      const aboutOffset = aboutRef.current.offsetTop;
-      const resumeOffset = resumeRef.current.offsetTop;
-      const serviceOffset = serviceRef.current.offsetTop
-      const skillOffset = skillRef.current.offsetTop
-      const projectOffset = projectRef.current.offsetTop
-      const contactOffset = contactRef.current.offsetTop
+      if (
+        aboutRef.current &&
+        resumeRef.current &&
+        serviceRef.current &&
+        skillRef.current &&
+        projectRef.current &&
+        contactRef.current
+      ) {
+        const scrollPosition = window.scrollY;
+        const aboutOffset = aboutRef.current.offsetTop;
+        const resumeOffset = resumeRef.current.offsetTop;
+        const serviceOffset = serviceRef.current.offsetTop;
+        const skillOffset = skillRef.current.offsetTop;
+        const projectOffset = projectRef.current.offsetTop;
+        const contactOffset = contactRef.current.offsetTop;
 
-      if (scrollPosition < aboutOffset - 50) {
-        setActiveSection("Home");
-      } else if (scrollPosition >= aboutOffset - 50 && scrollPosition < resumeOffset - 65) {
-        setActiveSection("About");
-      } else if (scrollPosition >= resumeOffset - 65 && scrollPosition < serviceOffset - 65) {
-        setActiveSection("Resume");
-      } else if (scrollPosition >= serviceOffset - 65 && scrollPosition < skillOffset - 65) {
-        setActiveSection("Services");
-      } else if (scrollPosition >= skillOffset - 65 && scrollPosition < projectOffset - 65) {
-        setActiveSection("Skills");
-      } else if (scrollPosition >= projectOffset - 65 && scrollPosition < contactOffset - 65) {
-        setActiveSection("Projects");
-      } else if (scrollPosition >= contactOffset - 65) {
-        setActiveSection("Contact");
+        if (scrollPosition < aboutOffset - 50) {
+          setActiveSection("Home");
+        } else if (scrollPosition >= aboutOffset - 50 && scrollPosition < resumeOffset - 65) {
+          setActiveSection("About");
+        } else if (scrollPosition >= resumeOffset - 65 && scrollPosition < serviceOffset - 65) {
+          setActiveSection("Resume");
+        } else if (scrollPosition >= serviceOffset - 65 && scrollPosition < skillOffset - 65) {
+          setActiveSection("Services");
+        } else if (scrollPosition >= skillOffset - 65 && scrollPosition < projectOffset - 65) {
+          setActiveSection("Skills");
+        } else if (scrollPosition >= projectOffset - 65 && scrollPosition < contactOffset - 65) {
+          setActiveSection("Projects");
+        } else if (scrollPosition >= contactOffset - 65) {
+          setActiveSection("Contact");
+        }
       }
     };
 
@@ -93,11 +102,19 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef, projectRef
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("resize", handleResize)
-      window.removeEventListener("scroll", handleScroll)
-    }
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [
+    showMenu,
+    aboutRef.current,
+    resumeRef.current,
+    serviceRef.current,
+    skillRef.current,
+    projectRef.current,
+    contactRef.current,
+  ]);
 
-  }, [showMenu])
 
   return (
     <div className={`bg-black px-6 sm:px-16 md:px-10 lg:px-20 py-3 flex flex-row justify-between items-center ${stickyNavbar ? "sticky top-0 z-50 pt-4" : "relative"}`}>

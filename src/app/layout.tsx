@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const poppins = localFont({
-  src : [
+  src: [
     {
       path: "./fonts/Poppins-Black.ttf",
       weight: '900',
@@ -28,7 +28,7 @@ const poppins = localFont({
 });
 export const metadata: Metadata = {
   title: "Portfolio Website",
-  description: "",
+  description: "Passionate Computer Science Enthusiast | Dedicated to innovations in technology | Artificial Intelligence, Machine Learning and Cyber Security Enthusiast | Enrolled in Governer Sindh Initiative for Generative AI",
 };
 
 export default function RootLayout({
