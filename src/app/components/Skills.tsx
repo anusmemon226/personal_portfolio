@@ -14,7 +14,6 @@ const Skills = (_: unknown, ref: ForwardedRef<HTMLDivElement>) => {
                 <SkillCard skillName='Photoshop' percentage='90' />
                 <SkillCard skillName='Photoshop' percentage='80' />
             </div>
-
         </div>
     )
 }

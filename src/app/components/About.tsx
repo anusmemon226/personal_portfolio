@@ -28,7 +28,7 @@ const About = (_: unknown, ref: React.ForwardedRef<HTMLDivElement>) => {
             </h1>
           </div>
           <div>
-            <AboutDetailField title="Name" value="Muhammad Anus" />
+            <AboutDetailField title="Name" value="Muhammad Anas" />
             <AboutDetailField title="Email" value="anusm226@gmail.com" />
             <AboutDetailField title="Phone Number" value="+92 330 2626644" />
             <AboutDetailField title="Date of Birth" value="July 21, 2001" />

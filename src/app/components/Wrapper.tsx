@@ -10,6 +10,8 @@ import ScrollToTop from './ScrollToTop'
 import Skills from './Skills'
 import Projects from './Projects'
 import Contact from './Contact'
+import TechStack from './TechStack'
+import Footer from './Footer'
 
 const Wrapper = () => {
     const heroRef = useRef<HTMLDivElement>(null!)
@@ -47,8 +49,10 @@ const Wrapper = () => {
             <Resume ref={resumeRef} />
             <Services ref={ServicesRef} />
             <Skills ref={skillRef} />
+            <TechStack />
             <Projects ref={projectRef} />
             <Contact ref={contactRef} />
+            <Footer/>
             <ScrollToTop />
         </>
     )
