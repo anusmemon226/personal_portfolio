@@ -1,7 +1,7 @@
 import React from 'react'
 import { FieldError, UseFormRegister } from 'react-hook-form'
 
-type registerType = { name: string, email: string, subject: string, message: string }
+type registerType = { name: string, email: string, phone: string, subject: string, message: string }
 
 type fieldType = {
     label: string,
