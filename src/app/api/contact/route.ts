@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     try {
         const { name, email, phone, subject, message } = await req.json();
         console.log(email)
-        const info = await transporter.sendMail({
+        await transporter.sendMail({
             to: process.env.EMAIL_USER,
             subject: subject,
             html: `<p><strong>Name:</strong> ${name}</p>
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
         });
 
         return NextResponse.json({ success: true, message: "Message successfully sent" });
-    } catch (error: any) {
+    } catch (error) {
         console.error("Email error:", error);
         return NextResponse.json({ success: false, error: "Something went wrong" });
     }
