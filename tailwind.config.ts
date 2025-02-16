@@ -12,12 +12,6 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
-      backgroundImage: {
-        "profilePic": "url('/profilePicPng.webp')"
-      },
-      backgroundSize: {
-        "50%": "500px"
-      },
       screens: {
         "2sm": "568px",
         "3sm": "480px",

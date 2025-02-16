@@ -22,7 +22,7 @@ function Hero(_: unknown, ref: ForwardedRef<HTMLDivElement>) {
         </div>
       </div>
       <div
-        className={`sm:w-[90%] w-[100%] h-[100%] bg-profilePic bg-50% bg-bottom sm:bg-contain bg-no-repeat sm:bg-right-bottom absolute left-0`}
+        className={`sm:w-[90%] w-[100%] h-[100%] bg-[url('/profilePicPng.webp')] bg-bottom bg-cover 3sm:bg-contain bg-no-repeat sm:bg-right-bottom absolute left-0`}
       ></div>
     </div>
   );
