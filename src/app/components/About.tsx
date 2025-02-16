@@ -18,7 +18,7 @@ const About = (_: unknown, ref: React.ForwardedRef<HTMLDivElement>) => {
         Generative AI"/>
 
       <div className="flex max-md:flex-col md:justify-evenly max-md:items-center max-md:w-full">
-        <div className="w-[50%] aspect-square md:w-[50%] max-md:rounded-full max-md:overflow-hidden my-auto max-md:shadow-sm max-md:shadow-gray-600 max-md:mb-1">
+        <div className="w-[75%] sm:w-[60%] aspect-square md:w-[50%] max-md:rounded-full max-md:overflow-hidden my-auto max-md:shadow-sm max-md:shadow-gray-600 max-md:mb-1">
           <Image src={aboutProfile} alt="Profile Pic" className="w-[600px] block" />
         </div>
         <div className="w-[50%] max-md:w-[100%] bg-slate-50 px-8 flex flex-col justify-center py-5">
