@@ -44,7 +44,7 @@ const Wrapper = () => {
                 }}
             />
             <Navbar heroRef={heroRef} aboutRef={aboutRef} resumeRef={resumeRef} serviceRef={ServicesRef} skillRef={skillRef} projectRef={projectRef} contactRef={contactRef} />
-            <Hero ref={heroRef} />
+            <Hero ref={heroRef} references={[projectRef, contactRef]} />
             <About ref={aboutRef} />
             <Resume ref={resumeRef} />
             <Services ref={ServicesRef} />
@@ -52,7 +52,7 @@ const Wrapper = () => {
             <TechStack />
             <Projects ref={projectRef} />
             <Contact ref={contactRef} />
-            <Footer/>
+            <Footer />
             <ScrollToTop />
         </>
     )
