@@ -26,19 +26,22 @@ function Hero({ references }: { references: RefObject<HTMLDivElement>[] }, ref: 
               options={{
                 loop: true,
                 autoStart: true,
-                delay: 100,
+                deleteSpeed:20,
+                delay:50
               }}
               onInit={(typewriter) => {
                 typewriter
                   .typeString('A Freelance Web Developer')
-                  .pauseFor(500)
+                  .pauseFor(1000)
                   .deleteChars(13)
+                  .changeDeleteSpeed(20)
                   .typeString('Mobile App Developer')
-                  .pauseFor(500)
+                  .pauseFor(1000)
                   .deleteChars(20)
+                  .changeDeleteSpeed(20)
                   .typeString('AI/ML Engineer')
-                  .pauseFor(500)
-                  .deleteChars(14)
+                  .pauseFor(1000)
+                  .changeDeleteSpeed(20)
                   .start()
 
               }}
