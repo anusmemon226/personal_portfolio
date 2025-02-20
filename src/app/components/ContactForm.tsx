@@ -28,7 +28,7 @@ const ContactForm = () => {
     const handleSendEmail = async (formData: formSchemaType) => {
         const { name, email, phone, subject, message } = formData
         setIsLoading(true)
-        const sendMailResp = await (await fetch("https://anas-personal-portfolio.vercel.app/api/contact", {
+        const sendMailResp = await (await fetch("https://devanas.vercel.app/api/contact", {
             method: "POST",
             body: JSON.stringify({ name, email, phone, subject, message }),
             headers: {

@@ -27,7 +27,7 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef, projectRef
       case "About":
         window.scrollTo({ top: aboutRef.current.offsetTop - 40, behavior: "smooth" })
         break
-      case "Resume":
+      case "Education":
         window.scrollTo({ top: resumeRef.current.offsetTop - 60, behavior: "smooth" })
         break
       case "Services":
@@ -85,7 +85,7 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef, projectRef
         } else if (scrollPosition >= aboutOffset - 50 && scrollPosition < resumeOffset - 65) {
           setActiveSection("About");
         } else if (scrollPosition >= resumeOffset - 65 && scrollPosition < serviceOffset - 65) {
-          setActiveSection("Resume");
+          setActiveSection("Education");
         } else if (scrollPosition >= serviceOffset - 65 && scrollPosition < skillOffset - 65) {
           setActiveSection("Services");
         } else if (scrollPosition >= skillOffset - 65 && scrollPosition < projectOffset - 65) {
@@ -128,7 +128,7 @@ function Navbar({ heroRef, aboutRef, resumeRef, serviceRef, skillRef, projectRef
       >
         <NavLink title="Home" activeSection={activeSection} handleClick={handleClick} />
         <NavLink title="About" activeSection={activeSection} handleClick={handleClick} />
-        <NavLink title="Resume" activeSection={activeSection} handleClick={handleClick} />
+        <NavLink title="Education" activeSection={activeSection} handleClick={handleClick} />
         <NavLink title="Services" activeSection={activeSection} handleClick={handleClick} />
         <NavLink title="Skills" activeSection={activeSection} handleClick={handleClick} />
         <NavLink title="Projects" activeSection={activeSection} handleClick={handleClick} />
