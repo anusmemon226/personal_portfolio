@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import React, { ReactNode } from 'react'
 
 const ServiceCard = ({ icon, title }: { icon: ReactNode, title: string }) => {
